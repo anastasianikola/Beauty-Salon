@@ -65,6 +65,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\AppointmentView.cs" />
+    <Compile Include="Pages\AddClientService.xaml.cs">
+      <DependentUpon>AddClientService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditAndAddService.xaml.cs">
+      <DependentUpon>EditAndAddService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UpcomingAppointments.xaml.cs">
+      <DependentUpon>UpcomingAppointments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AdminLoginWindow.xaml.cs">
+      <DependentUpon>AdminLoginWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -135,7 +148,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\Autorization.xaml">
+    <Page Include="Pages\AddClientService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditAndAddService.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,11 +160,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\UpcomingAppointments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AdminLoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\Autorization.xaml.cs">
-      <DependentUpon>Autorization.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\PageServices.xaml.cs">
       <DependentUpon>PageServices.xaml</DependentUpon>
     </Compile>
@@ -203,112 +225,113 @@
       <DependentUpon>Database.edmx</DependentUpon>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
-    <Resource Include="Услуги салона красоты\122454.png">
+    <Resource Include="Resources\defaultImage.png" />
+    <Resource Include="Resources\122454.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\96.png">
+    <Resource Include="Resources\96.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\face.png">
+    <Resource Include="Resources\face.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\makeup.jpg">
+    <Resource Include="Resources\makeup.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\man.png">
+    <Resource Include="Resources\man.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\mask.jpeg">
+    <Resource Include="Resources\mask.jpeg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\piling.jpg">
+    <Resource Include="Resources\piling.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\soliarij.jpg">
+    <Resource Include="Resources\soliarij.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\брови.png">
+    <Resource Include="Resources\брови.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Гречишный массаж.jpg">
+    <Resource Include="Resources\Гречишный массаж.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Декорирование нарощенных ресниц стразами.jpg">
+    <Resource Include="Resources\Декорирование нарощенных ресниц стразами.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Демакияж.jpg">
+    <Resource Include="Resources\Демакияж.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Депиляция воском.jpg">
+    <Resource Include="Resources\Депиляция воском.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Европейский маникюр.jpg">
+    <Resource Include="Resources\Европейский маникюр.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\ИК-сауна.jpg">
+    <Resource Include="Resources\ИК-сауна.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Классический маникюр.png">
+    <Resource Include="Resources\Классический маникюр.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Комбинированный маникюр.jpg">
+    <Resource Include="Resources\Комбинированный маникюр.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Контурная пластика.jpg">
+    <Resource Include="Resources\Контурная пластика.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\массаж.jpg">
+    <Resource Include="Resources\массаж.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Мезотерапия.jpg">
+    <Resource Include="Resources\Мезотерапия.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Моделирование ресниц.jpg">
+    <Resource Include="Resources\Моделирование ресниц.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\ногти.png">
+    <Resource Include="Resources\ногти.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Окрашивание бровей.jpg">
+    <Resource Include="Resources\Окрашивание бровей.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Парафинотерапия.jpg">
+    <Resource Include="Resources\Парафинотерапия.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Покрытие ногтей гель-лаком.jpg">
+    <Resource Include="Resources\Покрытие ногтей гель-лаком.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Полировка ногтей.jpg">
+    <Resource Include="Resources\Полировка ногтей.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Прессотерапия.jpg">
+    <Resource Include="Resources\Прессотерапия.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Прокол ушей пистолетом.png">
+    <Resource Include="Resources\Прокол ушей пистолетом.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Ресницы.png">
+    <Resource Include="Resources\Ресницы.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Снятие ресниц.jpg">
+    <Resource Include="Resources\Снятие ресниц.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Стоун-терапия.jpg">
+    <Resource Include="Resources\Стоун-терапия.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\стрижка.png">
+    <Resource Include="Resources\стрижка.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Укрепление ногтей гелем.jpg">
+    <Resource Include="Resources\Укрепление ногтей гелем.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Шугаринг.jpg">
+    <Resource Include="Resources\Шугаринг.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Экспресс SPA.png">
+    <Resource Include="Resources\Экспресс SPA.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Услуги салона красоты\Экспресс-педикюр.jpg">
+    <Resource Include="Resources\Экспресс-педикюр.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

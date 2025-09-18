@@ -1,0 +1,10 @@
+﻿<Window x:Class="Beauty_Salon.Windows.AdminLoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Вход администратора" Height="150" Width="300" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Background="White">
+    <StackPanel Margin="20">
+        <TextBlock Text="Введите код администратора:" FontFamily="Tahoma" Margin="0,0,0,10"/>
+        <PasswordBox x:Name="pbCode" Height="30" FontSize="16"/>
+        <Button Content="Войти" Height="30" Margin="0,10,0,0" Click="BtnLogin_Click" FontFamily="Tahoma" FontSize="16" FontWeight="Bold" Background="#FFFF4A6D" BorderBrush="#00707070"/>
+    </StackPanel>
+</Window>

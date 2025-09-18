@@ -3,74 +3,99 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Beauty_Salon.Pages"
+      xmlns:local="clr-namespace:Beauty_Salon.Pages" xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageServices">
+    <Page.Resources>
+        <sys:String x:Key="defaultImage">
+            pack://application:,,,/Resources/defaultImage.png
+        </sys:String>
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="180"/>
-            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="180*"/>
+            <ColumnDefinition Width="180*"/>
+            <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
             <RowDefinition Height="56"/>
             <RowDefinition />
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2"
-Grid.ColumnSpan="3" HorizontalAlignment="Right">
-            <TextBlock Text="Пользователь"/>
-            <TextBlock x:Name="txtFullName"/>
-        </StackPanel>
-        <TextBox Name ="txtSearch" Grid.Row="1" Grid.Column="1"
-VerticalAlignment="Center" Margin="5, 0, 5, 0" TextChanged="txtSearch_TextChanged"/>
-        <ComboBox Name ="cmbSorting" Grid.Row="1" Grid.Column="2"
-SelectedIndex="0" VerticalAlignment="Center" Margin="5, 0, 5, 0"
-ItemsSource="{Binding SortingList}"
-SelectionChanged="cmbSorting_SelectionChanged"/>
-        <ComboBox Name ="cmbFilter" Grid.Row="1" Grid.Column="3"
-SelectedIndex="0" VerticalAlignment="Center" Margin="5, 0, 5, 0"
-ItemsSource="{Binding FilterList}"
-SelectionChanged="cmbFilter_SelectionChanged"/>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="4"
-VerticalAlignment="Center" HorizontalAlignment="Center">
 
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="5,0,5,0">
+
+            <TextBox Name="txtSearch"
+             Width="300"
+             MaxWidth="400"
+             Height="30"
+             TextChanged="txtSearch_TextChanged"
+             VerticalAlignment="Center" Margin="0,0,10,0"/>
+
+            <ComboBox Name="cmbSorting"
+              Width="180"
+              MaxWidth="200"
+              Height="30"
+              SelectedIndex="0"
+              ItemsSource="{Binding SortingList}"
+              SelectionChanged="cmbSorting_SelectionChanged"
+              VerticalAlignment="Center" Margin="0,0,10,0"/>
+
+            <ComboBox Name="cmbFilter"
+              Width="180"
+              MaxWidth="200"
+              Height="30"
+              SelectedIndex="0"
+              ItemsSource="{Binding FilterList}"
+              SelectionChanged="cmbFilter_SelectionChanged"
+              VerticalAlignment="Center"/>
         </StackPanel>
 
-        <ListView Name="LViewProduct" Grid.Column="1" Grid.ColumnSpan="4"
-Grid.Row="2" Margin="5,5,5,5" ScrollViewer.VerticalScrollBarVisibility="Auto"
-          ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=1}" SelectionChanged="LViewProduct_SelectionChanged" HorizontalAlignment="Left">
+
+        <ListView Name="LViewProduct" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" Margin="5,5,5,5" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" d:ItemsSource="{d:SampleData ItemCount=1}" SelectionChanged="LViewProduct_SelectionChanged" HorizontalAlignment="Center" Width="785">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment"
-Value="Stretch"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="1"
-Background="{Binding Backgroud}" HorizontalAlignment="Left">
-                        <Grid>
+                    <Border BorderBrush="Black" BorderThickness="1">
+                        <Grid Loaded="ServiceCard_Loaded">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
-                            <Image Margin="25,5,25,5" Source="{Binding MainImagePath}"/>
-                            <StackPanel Grid.Column="1" Margin="5,5,5,5">
-                                <TextBox Text="{Binding Title}" FontWeight="Bold"/>
+
+                            <Image Width="180" Height="180" Margin="5"
+                   Source="{Binding ImgPath, FallbackValue={StaticResource defaultImage}}"/>
+
+                            <StackPanel Grid.Column="1" Margin="5">
+                                <TextBlock x:Name="tbTitle" Text="{Binding Title}" FontWeight="Bold" />
+
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBox Text="{Binding Cost}" TextDecorations="Strikethrough"/>
-                                    <TextBox Text="{Binding CostWithDiscount, Mode=OneWay}" FontWeight="Bold"/>
-                                    <TextBox Text="за" FontWeight="Bold"/>
-                                    <TextBox Text="{Binding DurationInSeconds}"/>
+                                    <TextBlock x:Name="tbOldCost" Text="{Binding Cost}" Foreground="Gray"/>
+                                    <TextBlock x:Name="tbNewCost" Text="{Binding CostWithDiscount}" FontWeight="Bold" Visibility="Collapsed"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBox Text="* скидка "/>
-                                    <TextBox Text="{Binding Discount}"/>
+                                    <TextBlock Text="Время: " Foreground="Black"/>
+                                    <TextBlock Text="{Binding TimeInMinute}" FontWeight="Bold"/>
+                                    <TextBlock Text=" минут" Foreground="Black"/>
+                                </StackPanel>
+
+                                <TextBlock x:Name="tbDiscount" Text="{Binding Discount, StringFormat=Скидка {0}%}" Foreground="Red" Visibility="Collapsed"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="btn_Edit" Margin="10" Height="30" MaxWidth="150" Background="#FFFF4A6D" FontWeight="Bold" Visibility="Collapsed" Click="btn_Edit_Click">Редактировать</Button>
+                                    <Button x:Name="btn_Delete" Margin="10" Height="30" MaxWidth="150" Background="#FFFF4A6D" FontWeight="Bold" Visibility="Collapsed" Click="btn_Delete_Click">Удалить</Button>
+                                    <Button x:Name="btn_ClientService" Margin="10" Height="30" MaxWidth="150" Background="#FFFF4A6D" FontWeight="Bold" Visibility="Collapsed" Click="btn_ClientService">Записать на услугу</Button>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
@@ -78,5 +103,8 @@ Background="{Binding Backgroud}" HorizontalAlignment="Left">
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock x:Name="tbCountRow" Text="{Binding CountRow}" FontFamily="Tahoma" FontSize="16" FontWeight="Bold"/>
+        </StackPanel>
     </Grid>
 </Page>

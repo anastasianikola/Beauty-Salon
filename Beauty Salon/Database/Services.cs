@@ -36,11 +36,46 @@ namespace Beauty_Salon.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServicePhoto> ServicePhoto { get; set; }
 
-        public decimal CostWithDiscount 
+        public string CostWithDiscount 
+        {
+            get 
+            {
+                if (this.Discount > 0) 
+                { 
+                    var costWithDiscount = Convert.ToDouble(this.Cost) - Convert.ToDouble(this.Cost) * Convert.ToDouble(this.Discount / 100.00);
+                    return costWithDiscount.ToString();
+                }
+                return this.Cost.ToString();
+            }
+        }
+        public string ImgPath 
+        {
+            get 
+            {
+                var path = " pack://application:,,,/Resources/" + this.MainImagePath;
+                return path;
+            }
+        }
+        public string TimeInMinute
+        {
+            get 
+            {
+                var timeInMinute = DurationInSeconds / 60;
+                return timeInMinute.ToString();
+            }
+        }
+        private bool HasDiscount
         {
             get 
             { 
-                return Cost - (Cost * (decimal)Discount / 100);
+                return Discount > 0;
+            }
+        }
+        private double OldCost
+        {
+            get 
+            { 
+                return Convert.ToDouble(this.Cost);
             }
         }
 

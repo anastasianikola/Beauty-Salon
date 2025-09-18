@@ -59,15 +59,5 @@ namespace Beauty_Salon.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
-        /// </summary>
-        internal static System.Drawing.Icon beauty_logo {
-            get {
-                object obj = ResourceManager.GetObject("beauty_logo", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
     }
 }
